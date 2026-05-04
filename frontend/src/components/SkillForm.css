@@ -1,0 +1,156 @@
+.skill-form-page {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.form-card-premium {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header-premium {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.form-header-premium h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.share-btn-top {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-body-premium {
+  display: flex;
+  height: 500px;
+}
+
+.media-preview-section {
+  flex: 1.2;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.upload-placeholder {
+  color: #555;
+  text-align: center;
+}
+
+.preview-container-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.remove-media {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inputs-section {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 10px;
+}
+
+.input-row input, .input-row select, .input-row textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+}
+
+.textArea-row {
+  align-items: flex-start;
+}
+
+.textArea-row textarea {
+  height: 150px;
+  resize: none;
+}
+
+.form-error-premium {
+  background: #ff444422;
+  color: #ff4444;
+  padding: 10px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .skill-form-page {
+    padding-top: 70px;
+  }
+  
+  .form-card-premium {
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .form-body-premium {
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+  }
+  
+  .media-preview-section {
+    height: 250px;
+    flex: none;
+  }
+  
+  .inputs-section {
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .input-row input, .input-row select, .input-row textarea {
+    font-size: 14px;
+  }
+}

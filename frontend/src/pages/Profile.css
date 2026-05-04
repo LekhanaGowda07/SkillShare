@@ -1,0 +1,189 @@
+.profile-page {
+  max-width: 935px;
+  margin: 80px auto 0;
+  padding: 20px;
+  color: var(--text-color);
+}
+
+.profile-header {
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info-section {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.profile-avatar-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent-color);
+  padding: 3px;
+}
+
+.profile-details {
+  flex: 2;
+}
+
+.profile-username-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-username-row h2 {
+  font-size: 28px;
+  font-weight: 300;
+}
+
+.edit-profile-btn {
+  background: transparent;
+  border: 1px solid #dbdbdb;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.settings-icon {
+  cursor: pointer;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.profile-bio {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  border-top: 1px solid #dbdbdb;
+  margin-top: 50px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 15px 0;
+  color: #8e8e8e;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-top: 1px solid transparent;
+  margin-top: -1px;
+}
+
+.tab.active {
+  color: var(--text-color);
+  border-top: 1px solid var(--text-color);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 30px;
+}
+
+.profile-skill-card {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.profile-skill-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.profile-skill-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.overlay-stats {
+  display: flex;
+  gap: 30px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.overlay-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.empty-profile {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  color: #8e8e8e;
+}
+
+@media (max-width: 768px) {
+  .profile-info-section {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .profile-username-row {
+    flex-direction: column;
+  }
+  
+  .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .profile-stats {
+    justify-content: center;
+    gap: 15px;
+    font-size: 14px;
+  }
+}
