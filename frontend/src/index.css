@@ -4,20 +4,20 @@
   --primary-color: #6366f1;
   --secondary-color: #8b5cf6;
   --accent-color: #ec4899;
-  --bg-color: #ffffff;
+  --bg-color: #f8faff; /* Tinted off-white */
   --text-color: #0f172a;
   --text-muted: #64748b;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --header-height: 60px; /* Reduced from 70px */
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.05);
+  --header-height: 60px;
 }
 
 .dark {
-  --bg-color: #020617;
+  --bg-color: #020617; /* Deep midnight */
   --text-color: #f8fafc;
   --text-muted: #94a3b8;
-  --card-bg: rgba(15, 23, 42, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -29,8 +29,14 @@
 body {
   font-family: 'Outfit', sans-serif;
   background-color: var(--bg-color);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }

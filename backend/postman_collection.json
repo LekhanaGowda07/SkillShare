@@ -21,7 +21,7 @@
               "mode": "raw",
               "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
             },
-            "url": "http://localhost:5000/users"
+            "url": "http://localhost:5001/users"
           }
         },
         {
@@ -38,7 +38,7 @@
               "mode": "raw",
               "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
             },
-            "url": "http://localhost:5000/users/login"
+            "url": "http://localhost:5001/users/login"
           }
         },
         {
@@ -51,7 +51,7 @@
                 "value": "Bearer {{token}}"
               }
             ],
-            "url": "http://localhost:5000/users/me"
+            "url": "http://localhost:5001/users/me"
           }
         }
       ]
@@ -77,21 +77,55 @@
               "mode": "raw",
               "raw": "{\n  \"title\": \"Coding in React\",\n  \"description\": \"Learn the basics of React.js components.\",\n  \"category\": \"Programming\",\n  \"image\": \"https://images.unsplash.com/photo-1633356122544-f134324a6cee\",\n  \"videoUrl\": \"https://youtube.com/watch?v=dQw4w9WgXcQ\"\n}"
             },
-            "url": "http://localhost:5000/skills"
+            "url": "http://localhost:5001/skills"
           }
         },
         {
           "name": "Get All Skills",
           "request": {
             "method": "GET",
-            "url": "http://localhost:5000/skills"
+            "url": "http://localhost:5001/skills"
           }
         },
         {
           "name": "Get Trending Skills",
           "request": {
             "method": "GET",
-            "url": "http://localhost:5000/skills/trending"
+            "url": "http://localhost:5001/skills/trending"
+          }
+        },
+        {
+          "name": "Update Skill",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Skill Title\",\n  \"description\": \"Updated description here.\"\n}"
+            },
+            "url": "http://localhost:5001/skills/{{skill_id}}"
+          }
+        },
+        {
+          "name": "Delete Skill",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": "http://localhost:5001/skills/{{skill_id}}"
           }
         },
         {
@@ -104,7 +138,7 @@
                 "value": "Bearer {{token}}"
               }
             ],
-            "url": "http://localhost:5000/skills/{{skill_id}}/like"
+            "url": "http://localhost:5001/skills/{{skill_id}}/like"
           }
         },
         {
@@ -125,7 +159,7 @@
               "mode": "raw",
               "raw": "{\n  \"text\": \"This is an amazing tutorial! Thanks for sharing.\"\n}"
             },
-            "url": "http://localhost:5000/skills/{{skill_id}}/comment"
+            "url": "http://localhost:5001/skills/{{skill_id}}/comment"
           }
         }
       ]
@@ -140,7 +174,7 @@
             "value": "Bearer {{token}}"
           }
         ],
-        "url": "http://localhost:5000/notifications"
+        "url": "http://localhost:5001/notifications"
       }
     }
   ],
@@ -155,3 +189,4 @@
     }
   ]
 }
+

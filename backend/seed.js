@@ -33,8 +33,8 @@ const skills = [
     title: "Cinematic Videography",
     description: "Discover how to shoot professional-looking videos using just your smartphone. Lighting and framing tips included.",
     category: "Design",
-    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&q=80&w=1000",
-    videoUrl: "https://www.youtube.com/watch?v=jW_nK6F9RjA",
+    image: "https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/412/posts/108771/image-upload/young_videographer_in_casualwear_shooting_commerci_2023_11_27_05_33_48_utc.jpg",
+    videoUrl: "https://www.youtube.com/embed/vnd6y6qn27s",
     likes: 210,
   }
 ];
@@ -43,13 +43,13 @@ const seedDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/skillsharing');
     console.log("Connected to MongoDB...");
-    
+
     await Skill.deleteMany({});
     console.log("Cleared existing skills...");
-    
+
     await Skill.insertMany(skills);
     console.log("Seed data inserted successfully!");
-    
+
     process.exit();
   } catch (err) {
     console.error("Error seeding database:", err);

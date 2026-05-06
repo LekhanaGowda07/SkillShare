@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
 import { User, Mail, Lock, UserPlus } from 'lucide-react';
+import './Auth.css';
 
 const Signup = () => {
   const [name, setName] = useState('');

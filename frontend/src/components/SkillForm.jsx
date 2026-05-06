@@ -29,13 +29,21 @@ const SkillForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    
+    if (!formData.title || !formData.description) {
+      setError('Please fill in all required fields (Title and Description)');
+      return;
+    }
+
     setIsLoading(true);
 
     try {
       await skillsAPI.create(formData);
       navigate('/');
     } catch (err) {
-      setError('Failed to create skill. Please login again or check your data.');
+      console.error('Error creating skill:', err);
+      const message = err.response?.data?.message || 'Failed to create skill. Please login again or check your connection.';
+      setError(message);
       setIsLoading(false);
     }
   };
@@ -47,84 +55,86 @@ const SkillForm = () => {
         animate={{ opacity: 1, scale: 1 }}
         className="form-card-premium glass"
       >
-        <div className="form-header-premium">
-          <button className="close-btn" onClick={() => navigate('/')}><X /></button>
-          <h2>Create New Post</h2>
-          <button className="share-btn-top" onClick={handleSubmit} disabled={isLoading}>
-            {isLoading ? '...' : 'Share'}
-          </button>
-        </div>
-
-        <div className="form-body-premium">
-          <div className="media-preview-section">
-            {formData.image ? (
-              <div className="preview-container-main">
-                <img src={formData.image} alt="Preview" />
-                <button className="remove-media" onClick={() => setFormData({...formData, image: ''})}>Remove</button>
-              </div>
-            ) : (
-              <div className="upload-placeholder">
-                <Upload size={48} />
-                <p>Enter Image URL below to see preview</p>
-              </div>
-            )}
+        <form onSubmit={handleSubmit}>
+          <div className="form-header-premium">
+            <button type="button" className="close-btn" onClick={() => navigate('/')}><X /></button>
+            <h2>Create New Post</h2>
+            <button type="submit" className="share-btn-top" disabled={isLoading}>
+              {isLoading ? '...' : 'Share'}
+            </button>
           </div>
 
-          <div className="inputs-section">
-            <div className="input-row">
-              <Tag size={20} />
-              <select name="category" value={formData.category} onChange={handleChange}>
-                {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-              </select>
+          <div className="form-body-premium">
+            <div className="media-preview-section">
+              {formData.image ? (
+                <div className="preview-container-main">
+                  <img src={formData.image} alt="Preview" />
+                  <button type="button" className="remove-media" onClick={() => setFormData({...formData, image: ''})}>Remove</button>
+                </div>
+              ) : (
+                <div className="upload-placeholder">
+                  <Upload size={48} />
+                  <p>Enter Image URL below to see preview</p>
+                </div>
+              )}
             </div>
 
-            <div className="input-row">
-              <input 
-                type="text" 
-                name="title" 
-                placeholder="Write a title..." 
-                value={formData.title} 
-                onChange={handleChange} 
-                required
-              />
-            </div>
+            <div className="inputs-section">
+              <div className="input-row">
+                <Tag size={20} />
+                <select name="category" value={formData.category} onChange={handleChange}>
+                  {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                </select>
+              </div>
 
-            <div className="input-row textArea-row">
-              <AlignLeft size={20} />
-              <textarea 
-                name="description" 
-                placeholder="Write a caption/description..." 
-                value={formData.description} 
-                onChange={handleChange} 
-                required
-              />
-            </div>
+              <div className="input-row">
+                <input 
+                  type="text" 
+                  name="title" 
+                  placeholder="Write a title..." 
+                  value={formData.title} 
+                  onChange={handleChange} 
+                  required
+                />
+              </div>
 
-            <div className="input-row">
-              <Upload size={20} />
-              <input 
-                type="url" 
-                name="image" 
-                placeholder="Image URL (e.g., Unsplash link)" 
-                value={formData.image} 
-                onChange={handleChange} 
-              />
-            </div>
+              <div className="input-row textArea-row">
+                <AlignLeft size={20} />
+                <textarea 
+                  name="description" 
+                  placeholder="Write a caption/description..." 
+                  value={formData.description} 
+                  onChange={handleChange} 
+                  required
+                />
+              </div>
 
-            <div className="input-row">
-              <Video size={20} />
-              <input 
-                type="url" 
-                name="videoUrl" 
-                placeholder="Video URL (YouTube)" 
-                value={formData.videoUrl} 
-                onChange={handleChange} 
-              />
+              <div className="input-row">
+                <Upload size={20} />
+                <input 
+                  type="url" 
+                  name="image" 
+                  placeholder="Image URL (e.g., Unsplash link)" 
+                  value={formData.image} 
+                  onChange={handleChange} 
+                />
+              </div>
+
+              <div className="input-row">
+                <Video size={20} />
+                <input 
+                  type="url" 
+                  name="videoUrl" 
+                  placeholder="Video URL (YouTube)" 
+                  value={formData.videoUrl} 
+                  onChange={handleChange} 
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        {error && <div className="form-error-premium">{error}</div>}
+          {error && <div className="form-error-premium">{error}</div>}
+        </form>
       </motion.div>
     </div>
   );

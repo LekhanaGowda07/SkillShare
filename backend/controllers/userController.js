@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const Follow = require('../models/Follow');
 
 // Generate JWT
 const generateToken = (id) => {
@@ -8,23 +9,17 @@ const generateToken = (id) => {
   });
 };
 
-const Follow = require('../models/Follow');
-
 // Register new user
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
-
   if (!name || !email || !password) {
     return res.status(400).json({ message: 'Please add all fields' });
   }
-
   const userExists = await User.findOne({ email });
   if (userExists) {
     return res.status(400).json({ message: 'User already exists' });
   }
-
   const user = await User.create({ name, email, password });
-
   if (user) {
     res.status(201).json({
       _id: user.id,
@@ -40,9 +35,7 @@ const registerUser = async (req, res) => {
 // Authenticate a user
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
-
   const user = await User.findOne({ email });
-
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user.id,
@@ -57,7 +50,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// Get user data
 const getMe = async (req, res) => {
   res.status(200).json(req.user);
 };
@@ -86,7 +78,6 @@ const getProfileStats = async (req, res) => {
   const followersCount = await Follow.countDocuments({ following: id });
   const followingCount = await Follow.countDocuments({ follower: id });
   const isFollowing = req.user ? !!(await Follow.findOne({ follower: req.user._id, following: id })) : false;
-  
   res.status(200).json({ followersCount, followingCount, isFollowing });
 };
 
@@ -123,6 +114,9 @@ const getFollowingDetails = async (req, res) => {
 };
 
 const getFollowingList = async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ message: 'Not authorized' });
+  }
   const follows = await Follow.find({ follower: req.user._id });
   const followingIds = follows.map(f => f.following.toString());
   res.status(200).json(followingIds);
