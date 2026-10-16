@@ -7,10 +7,7 @@
   **A full-stack social learning platform where students share knowledge through an immersive, reel-style experience.**
 
   <p>
-    <a href="#features">Explore Features</a> &nbsp; • &nbsp;
-    <a href="#architecture">Architecture</a> &nbsp; • &nbsp;
-    <a href="#getting-started">Run Locally</a> &nbsp; • &nbsp;
-    <a href="#deployment">Deployment</a>
+    <a href="https://skill-share-three-ashy.vercel.app/">Explore here</a> &nbsp;
   </p>
 
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&amp;logo=react&amp;logoColor=61DAFB" alt="React" />
