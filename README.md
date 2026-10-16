@@ -162,7 +162,6 @@ SSSP/
 └── README.md
 ```
 
-*This structure highlights the main files described in the project. Other routes, configuration files, and components may exist in your repository.*
 
 ## 🔐 Authentication & Security
 
